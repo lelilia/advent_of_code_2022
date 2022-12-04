@@ -23,22 +23,18 @@ def find_badge(bags):
     return list(set(bag_1).intersection(bag_2).intersection(bag_3))[0]
 
 
-def solve_1(input):
-    part_1 = 0
-    for elf in input:
-        item = find_item(elf)
+def solve(elves):
+    part_1 = part_2 = 0
+    for i in range(len(elves)):
+        item = find_item(elves[i])
         part_1 += get_value(item)
-    return part_1
+        if i % 3 == 0:
+            badge = find_badge(elves[i : i + 3])
+            part_2 += get_value(badge)
+    return part_1, part_2
 
 
-def solve_2(elves):
-    part_2 = 0
-    for i in range(0, len(elves), 3):
-        badge = find_badge(elves[i:i+3])
-        part_2 += get_value(badge)
-    return part_2
+solution_1, solution_2 = solve(input)
 
-
-print("Part 1:\t", solve_1(input))
-print("Part 2:\t", solve_2(input))
-
+print("Part 1:", solution_1)
+print("Part 2:", solution_2)
