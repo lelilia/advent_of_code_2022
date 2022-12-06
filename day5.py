@@ -11,11 +11,12 @@ stacks = {}
 
 for line in stack.split("\n")[-2::-1]:
     for i, element in enumerate(line[1:-1:4]):
+        index = i + 1
         if element == " ":
             continue
-        if i + 1 not in stacks:
-            stacks[i + 1] = []
-        stacks[i + 1].append(element)
+        if index not in stacks:
+            stacks[index] = []
+        stacks[index].append(element)
 
 
 stacks_1 = stacks.copy()
